@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode.js/lib/qrcode.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+        }
+
+        .container {
+            max-width: 800px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .menu-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .menu-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateX(10px);
+        }
+
+        .qr-container {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .qr-code {
+            margin-top: 1rem;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .back-button:hover {
+            background-color: #45a049;
+            transform: translateY(-3px);
+        }
+
+        h1 {
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Il nostro menù</h1>
+        <ul class="menu-list">
+            <li class="menu-item">Spaghetti Carbonara</li>
+            <li class="menu-item">Pizza Margherita</li>
+            <li class="menu-item">Risotto alla Milanese</li>
+            <li class="menu-item">Pollo alla Cacciatora</li>
+            <li class="menu-item">Tiramisù</li>
+        </ul>
+
+        <div class="qr-container">
+            <p>Scannerizza il QR code per tornare alla pagina iniziale</p>
+            <div id="qrcode" class="qr-code"></div>
+        </div>
+    </div>
+
+    <a href="index.html" class="back-button">Torna alla home</a>
+
+    <script>
+        // Generazione del codice QR
+        window.onload = function() {
+            const qr = new QRCode(document.getElementById('qrcode'), {
+                text: window.location.href,
+                width: 256,
+                height: 256,
+                colorDark: '#ffffff',
+                colorLight: '#333',
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        };
+    </script>
+</body>
+</html>
