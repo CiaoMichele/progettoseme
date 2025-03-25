@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu</title>
-    <script src="https://cdn.jsdelivr.net/npm/qrcode.js/lib/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
     <style>
         body {
             margin: 0;
@@ -94,7 +94,7 @@
         </ul>
 
         <div class="qr-container">
-            <p>Scannerizza il QR code per tornare alla pagina iniziale</p>
+            <p>Scannerizza il QR code per tornare alla pagina principale</p>
             <div id="qrcode" class="qr-code"></div>
         </div>
     </div>
@@ -102,10 +102,11 @@
     <a href="index.html" class="back-button">Torna alla home</a>
 
     <script>
-        // Generazione del codice QR
+        // Generazione del codice QR che punta alla pagina principale
         window.onload = function() {
+            const currentURL = window.location.href;
             const qr = new QRCode(document.getElementById('qrcode'), {
-                text: window.location.href,
+                text: currentURL,
                 width: 256,
                 height: 256,
                 colorDark: '#ffffff',
